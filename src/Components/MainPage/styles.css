@@ -1,0 +1,20 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    height: 100%;
+}
+
+.center-box {
+    width: 1600px; /* Subtracting margin from both sides */
+    height: 800px; /* Subtracting margin from both sides */
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 20px; /* Inner padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for some depth */
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1.5px solid gray; /* Light gray border */
+}

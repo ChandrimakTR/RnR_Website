@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Header from './Components/Header/header.js';
+import MainPage from './Components/MainPage/mainpage.js';
+import SubmissionPage from './Components/SubmissionPage/submissionPage.js';
 
 function App() {
+  const [showMainPage, setShowMainPage] = useState(true);
+  const [showSubmissionPage, setShowSubmissionPage] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header setShowMainPage={setShowMainPage} setShowSubmissionPage={setShowSubmissionPage}/>
+      {showMainPage && <MainPage />}
+      {showSubmissionPage && <SubmissionPage />}
     </div>
   );
 }
