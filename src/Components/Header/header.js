@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-const Header = ({setShowMainPage, setShowSubmissionPage}) => {
+const Header = ({setShowMainPage, setShowSubmissionPage, showMainPage, showSubmissionPage}) => {
 
     const onClickHome = () => {
         setShowMainPage(true);
@@ -15,7 +15,12 @@ const Header = ({setShowMainPage, setShowSubmissionPage}) => {
 
   return (
     <>
-      <div className="header-top">
+      <div className="header-top"
+      style={{
+        backgroundImage: 'url(/header.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
         <img src="./tr_pri_logo_rgb_color.png" alt="TR Icon" className="tr-icon" />
         <div className="header-title">
           <span className="header-submission">RnR Website</span>
@@ -29,16 +34,14 @@ const Header = ({setShowMainPage, setShowSubmissionPage}) => {
       </div>
       <div className="header">
         <div className="header-logo">
-          <button className="no-button" onClick={() => onClickHome()}>
+          <button className={showMainPage === true ?"selected-button" : "no-button"} onClick={() => onClickHome()}>
             <img src="./home.png" alt="Home Icon" className="icon-home" />
             <span className="header-submission">Home</span>
           </button>
-          <span className="delimiter">|</span>
-          <button className="no-button" onClick={() => onClickSubmission()}>
+          <button className={showSubmissionPage === true ?"selected-button" : "no-button"} onClick={() => onClickSubmission()}>
             <img src="./file1.png" alt="File Icon" className="icon-file" />
             <span className="header-submission">Submit Nominations</span>
           </button>
-          <span className="delimiter">|</span>
           <button className="no-button">
             <img src="./crown.png" alt="Crown Icon" className="icon-crown" />
             <span className="header-submission">Past Leaderboards</span>

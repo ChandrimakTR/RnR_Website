@@ -10,7 +10,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header setShowMainPage={setShowMainPage} setShowSubmissionPage={setShowSubmissionPage}/>
+      <Header 
+      setShowMainPage={setShowMainPage} 
+      setShowSubmissionPage={setShowSubmissionPage}
+      showMainPage={showMainPage}
+      showSubmissionPage={showSubmissionPage}/>
       {showMainPage && <MainPage />}
       {showSubmissionPage && <SubmissionPage />}
     </div>

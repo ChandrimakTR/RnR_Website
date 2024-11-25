@@ -9,12 +9,129 @@
 .center-box {
     width: 1600px; /* Subtracting margin from both sides */
     height: 800px; /* Subtracting margin from both sides */
-    background-color: #f0f0f0; /* Light gray background */
     padding: 20px; /* Inner padding */
+    background-color: rgb(242, 241, 237);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for some depth */
     border-radius: 8px; /* Rounded corners */
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row; /* Align items in a column */
+    align-items: flex-start; /* Align items to the top left */
+    gap: 10px; /* Add gap between items */
+}
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 30%;
+    height: 100%; /* Occupy full height of the center-box */
+    display: flex;
+    flex-direction: column; /* Align items in a column */
+    justify-content: flex-start; /* Align items to the flex-start */
+    gap: 10px; /* Add gap between items */
+}
+
+.list-item {
+    background-color: orange;
+    padding: 15px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    margin-right: 10px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.list-item:hover {
+    background-color: darkorange;
+}
+
+.list-item.selected {
+    background-color: darkorange;
+    font-weight: bold;
+}
+.list-item.selected::after {
+    content: '';
+    position: absolute;
+    right: -10px; /* Adjust the position of the tip */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid darkorange; /* Match the background color */
+    z-index: 1;
+}
+
+.form {
+    justify-content: flex-end;
+    width: 75%; /* Set width to 70% of available space */
+    height: 95%; /* Occupy full height of the center-box */
+    background-color: white;
+    border: 1px solid white; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for some depth */
+}
+
+.form h2 {
+    margin-top: 90px;
+    margin-bottom: 40px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
     align-items: center;
-    border: 1.5px solid gray; /* Light gray border */
+    margin-bottom: 15px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.form-group label {
+    width: 200px; /* Set a fixed width for the labels */
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 18px; /* Increase font size */
+}
+
+.form-group input {
+    flex: 1; /* Allow the input to take up the remaining space */
+    padding: 10px;
+    border: 1.5px solid grey;
+    border-radius: 4px;
+    font-size: 16px; /* Increase font size */
+
+    &:focus {
+        outline: none;
+        border-color: orange;
+    }
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-right: 40px;
+}
+
+.btn:hover {
+    background-color: darkorange;
 }

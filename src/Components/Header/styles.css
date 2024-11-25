@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 9px;
   background-color: rgb(190, 185, 185); /* Grey background as fallback */
   border: 2px solid black; /* Black border */
 /*   background-image: url('./header.jpg'); */
@@ -116,3 +115,8 @@
   cursor: pointer;
 }
 
+.selected-button {
+  background-color: rgb(126, 123, 123);
+  border: none;
+  cursor: pointer;
+}
