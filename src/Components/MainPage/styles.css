@@ -250,6 +250,16 @@
         width: 100%; /* Set width to 100% of available space */
         margin-bottom: 10px; /* Add margin between buttons */
     }
+    .input-with-icon {
+        width: 95%;
+    }
+    .okr-options-vertical {
+        width: 95%;
+        margin-bottom: 10px;
+    }
+    #location , #leadershipMember, #category {
+        width: 95%;
+    }
 }
 
 @media (max-width: 480px) {
