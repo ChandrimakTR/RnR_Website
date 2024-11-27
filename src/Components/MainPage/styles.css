@@ -262,6 +262,11 @@
     .form-group select,
     .form-group textarea {
         font-size: 14px; /* Adjust font size for smaller screens */
+        width: 80%;
+    }
+    .form-group textarea {
+        min-height: 80px;
+        flex: 1;
     }
 
     .btn {
