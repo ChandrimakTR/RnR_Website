@@ -215,6 +215,11 @@
 
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
+    .header-submission {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .center-box {
         width: 90%; /* Adjust width for smaller screens */
         height: auto; /* Adjust height for smaller screens */
@@ -223,6 +228,7 @@
     .form-group {
         flex-direction: column; /* Stack form elements vertically */
         align-items: flex-start; /* Align items to the start */
+        margin: 0px;
     }
 
     .form-group label {
@@ -262,7 +268,8 @@
     .form-group select,
     .form-group textarea {
         font-size: 14px; /* Adjust font size for smaller screens */
-        width: 80%;
+        width: 90%;
+        margin-bottom: 10px;
     }
     .form-group textarea {
         min-height: 80px;

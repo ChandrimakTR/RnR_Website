@@ -70,3 +70,98 @@
     font-weight: bold;
     color: #b57600;
 }
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .submission-page {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .search-button, .refresh-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media (max-width: 768px) {
+        .styled-table th, .styled-table td {
+            padding: 8px 10px; /* Reduce padding for smaller screens */
+        }
+    
+        .styled-table {
+            width: 100%; /* Ensure table takes full width */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            display: block; /* Display as block for better responsiveness */
+        }
+    
+        .styled-table thead, .styled-table tbody, .styled-table th, .styled-table td, .styled-table tr {
+            display: block; /* Display elements as block */
+        }
+        
+    
+        .styled-table thead tr {
+            position: absolute; /* Position header row absolutely */
+            top: -9999px; /* Move header row off-screen */
+            left: -9999px; /* Move header row off-screen */
+        }
+    
+        .styled-table tr {
+            border: 1px solid #dddddd; /* Add border to rows */
+            margin-bottom: 10px; /* Add margin between rows */
+        }
+    
+        .styled-table td {
+            border: none; /* Remove border from cells */
+            position: relative; /* Position cells relatively */
+            padding-left: 50%; /* Add padding to the left */
+            text-align: left; /* Align text to the left */
+        }
+    
+        .styled-table td:before {
+            content: attr(data-label); /* Use data-label attribute for cell content */
+            position: absolute; /* Position absolutely */
+            left: 10px; /* Position to the left */
+            width: calc(50% - 20px); /* Adjust width */
+            padding-right: 10px; /* Add padding to the right */
+            white-space: nowrap; /* Prevent text wrapping */
+            font-weight: bold; /* Make text bold */
+        }
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .submission-page {
+        padding: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .search-input {
+        font-size: 14px;
+    }
+
+    .search-button, .refresh-button {
+        font-size: 14px;
+        padding: 6px 12px;
+        width: 30%;
+    }
+
+    .styled-table th, .styled-table td {
+        padding: 6px 8px; /* Further reduce padding for smaller screens */
+    }
+
+    .styled-table td:before {
+        left: 5px; /* Adjust position for smaller screens */
+        padding-right: 5px; /* Adjust padding for smaller screens */
+    }
+}
