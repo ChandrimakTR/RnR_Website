@@ -72,5 +72,195 @@
 }
 
 .table-row {
-    position: relative; /* Ensure the dropdown menu is positioned correctly */
+    position: relative;
+}
+
+.dropdown-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.dropdown-form {
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+
+.table-form {
+    width: 100%;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-form-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.table-form-section {
+    margin-bottom: 30px;
+}
+
+.table-form-section-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 4px;
+    display: block;
+}
+
+.table-form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-form-group label {
+    width: 200px;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+}
+
+.table-form-group input,
+.table-form-group select,
+.table-form-group textarea {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.table-form-group textarea {
+    resize: vertical;
+}
+
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-with-icon input {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+}
+
+.info-icon {
+    margin-left: 5px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+}
+
+.info-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.table-form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.table-form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    /* Ensure no background properties are applied */
+}
+
+
+.table-save-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.table-save-button:hover {
+    background-color: darkorange;
+}
+
+.table-submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.table-submit-button:hover {
+    background-color: darkorange;
+}
+
+.required {
+    color: red;
+    margin-left: 5px;
 }

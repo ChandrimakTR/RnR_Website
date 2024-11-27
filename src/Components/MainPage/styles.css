@@ -7,99 +7,53 @@
 }
 
 .center-box {
-    width: 1600px; /* Subtracting margin from both sides */
-    height: 800px; /* Subtracting margin from both sides */
-    padding: 20px; /* Inner padding */
-    background-color: rgb(242, 241, 237);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for some depth */
-    border-radius: 8px; /* Rounded corners */
-    display: flex;
-    flex-direction: row; /* Align items in a column */
-    align-items: flex-start; /* Align items to the top left */
-    gap: 10px; /* Add gap between items */
-}
-.list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 30%;
-    height: 100%; /* Occupy full height of the center-box */
-    display: flex;
-    flex-direction: column; /* Align items in a column */
-    justify-content: flex-start; /* Align items to the flex-start */
-    gap: 10px; /* Add gap between items */
-}
-
-.list-item {
-    background-color: orange;
-    padding: 15px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: white;
-    font-size: 18px;
-    text-align: center;
-    border: none;
-    margin-right: 10px;
-    position: relative;
-    margin-bottom: 8px;
-}
-
-.list-item:hover {
-    background-color: darkorange;
-}
-
-.list-item.selected {
-    background-color: darkorange;
-    font-weight: bold;
-}
-.list-item.selected::after {
-    content: '';
-    position: absolute;
-    right: -10px; /* Adjust the position of the tip */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 2px;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 10px solid darkorange; /* Match the background color */
-    z-index: 1;
+    height: 1000px; /* Set height to 1000px */
+    width: 70%
 }
 
 .form {
-    justify-content: flex-end;
-    width: 75%; /* Set width to 70% of available space */
-    height: 95%; /* Occupy full height of the center-box */
+    width: 100%; /* Set width to 100% of available space */
     background-color: white;
-    border: 1px solid white; /* Light gray border */
+    border: 1px solid grey; /* Light gray border */
     border-radius: 8px; /* Rounded corners */
     padding: 20px; /* Inner padding */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for some depth */
 }
 
 .form h2 {
-    margin-top: 90px;
-    margin-bottom: 40px;
+    margin-top: 0;
+    margin-bottom: 20px;
     font-size: 24px;
     color: #333;
+    border-bottom: 2px solid #ccc; /* Add underline */
+    padding-bottom: 10px; /* Add padding below the text */
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(255, 180, 41); /* Grey background */
+    border: 1px solid #ccc; /* Border */
+    padding: 10px; /* Padding inside the block */
+    font-weight: bold; /* Bold text */
+    border-radius: 4px; /* Rounded corners */
+    display: block; /* Block display */
 }
 
 .form-group {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    margin-top: 40px;
-    margin-left: 120px;
-    margin-right: 120px;
-}
-
-.form-group select {
-    flex: 1; /* Allow the input and select to take up the remaining space */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px; /* Increase font size */
+    margin-left: 280px;
+    margin-right: 180px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .form-group label {
@@ -109,25 +63,135 @@
     font-size: 18px; /* Increase font size */
 }
 
-.form-group input {
-    flex: 1; /* Allow the input to take up the remaining space */
-    padding: 10px;
-    border: 1.5px solid white;
-    background-color: #f1efef;
+.form-group input,
+.form-group select,
+.form-group textarea {
+     /* Allow the input, select, and textarea to take up the remaining space */
+    padding: 8px;
+    border: 1px solid grey;
     border-radius: 4px;
     font-size: 16px; /* Increase font size */
-
-    &:focus {
-        outline: none;
-        border-color: orange;
+    width: 450px;
+    &:disabled {
+        background-color: #e9e7e7;
+        border: none;
     }
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+    width: 600px;
+    background-color: #f8f8f8;
+}
+
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-with-icon input {
+    flex: 1;
+    padding-right: 30px; /* Add space for the icon */
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+}
+
+.info-icon_main {
+    margin-left: 5px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    background-color: rgb(248, 248, 6);
+    color: grey;
+}
+
+.info-icon_main:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    background-color: white;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the icon */
+    left: 50%;
+    margin-left: -100px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.okr-options-vertical {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    margin-top: 10px;
+    border: 1px solid grey;
+}
+
+.okr-option {
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.okr-option.selected {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
+.okr-option:hover {
+    background-color: #f0f0f0;
 }
 
 .form-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    margin-right: 80px;
+}
+
+.textarea-info {
+    align-self: flex-end; /* Align to the right */
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+    margin-left: 4px;
 }
 
 .btn {
@@ -138,10 +202,12 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 30px;
-    margin-right: 40px;
 }
 
 .btn:hover {
     background-color: darkorange;
+}
+.required {
+    color: black;
+    margin-left: 1px;
 }
