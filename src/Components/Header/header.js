@@ -28,7 +28,7 @@ const Header = ({setShowMainPage, setShowSubmissionPage, showMainPage, showSubmi
         <nav className="header-nav">
           <ul>
             <li><a href="#about">User Name</a></li>
-            <img src="/Profileicon.svg" alt="Profile Icon" className="profile-icon" />
+            <img src="./Profileicon.svg" alt="Profile Icon" className="profile-icon" />
           </ul>
         </nav>
       </div>

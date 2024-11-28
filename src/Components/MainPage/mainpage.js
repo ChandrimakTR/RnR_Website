@@ -7,6 +7,7 @@ const MainPage = () => {
     const [period, setPeriod] = useState('');
     const [employeeId, setEmployeeId] = useState('');
     const [category, setCategory] = useState('');
+    const [nominationType, setNominationType] = useState('Quarterly');
     const [employeeDetails, setEmployeeDetails] = useState({
         employeeName: '',
         designation: '',
@@ -18,6 +19,9 @@ const MainPage = () => {
 
     const [nominationObject, setNominationObject] = useState({});
     const [okrOption, setOkrOption] = useState('');
+    const [teamMembers, setTeamMembers] = useState([]);
+    const [projectStartDate, setProjectStartDate] = useState('');
+    const [projectEndDate, setProjectEndDate] = useState('');
 
     const handleLocationChange = (event) => {
         setLocation(event.target.value);
@@ -39,6 +43,31 @@ const MainPage = () => {
     const handleCategoryChange = (event) => {
         setCategory(event.target.innerHTML);
     };
+
+    const handleProjectStartDateChange = (event) => {
+        setProjectStartDate(event.target.value);
+    };
+
+    const handleProjectEndDateChange = (event) => {
+        setProjectEndDate(event.target.value);
+    };
+
+    const addTeamMember = () => {
+        setTeamMembers([...teamMembers, { employeeId: '', employeeName: '', designation: '', teamBu: '' }]);
+    };
+
+    const handleTeamMemberChange = (index, field, value) => {
+        const newTeamMembers = [...teamMembers];
+        newTeamMembers[index][field] = value;
+        setTeamMembers(newTeamMembers);
+    };
+
+    const handleNominatingTypeChange = (event) => {
+        setNominationType(event.target.value);
+    };
+
+    
+
     const handleSearch = async () => {
         // Implement search functionality here
         try {
@@ -122,7 +151,10 @@ const MainPage = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="nominatingType">Nominating Type</label>
-                            <input type="text" id="nominatingType" name="nominatingType" disabled={true} />
+                            <select id="nominatingType" name="nominatingType" value={nominationType} onChange={handleNominatingTypeChange}>
+                                <option value="Quarterly">Quarterly</option>
+                                <option value="Half Yearly">Half-Yearly</option>
+                            </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="period">Period</label>
@@ -138,7 +170,7 @@ const MainPage = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="leadershipMember">Leadership Member <span className="required">*</span></label>
+                            <label htmlFor="leadershipMember">BLT Member <span className="required">*</span></label>
                             <select id="leadershipMember" name="leadershipMember" value={leadershipMember} onChange={handleLeadershipMemberChange} required>
                                 <option value="">Select a member</option>
                                 <option value="A">A</option>
@@ -147,7 +179,34 @@ const MainPage = () => {
                             </select>
                         </div>
                     </div>
-                    <div className="form-section">
+                    {nominationType === 'Half Yearly' ? <div className="form-section">
+                        <h3>Team Nomination Details</h3>
+                        <div className="form-group">
+                            <label htmlFor="projectName">Project Name<span className="required">*</span></label>
+                            <input type="text" id="projectName" name="projectName" value={employeeDetails.employeeName} required/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="projectStartDate">Project Start Date</label>
+                            <input type="date" id="projectStartDate" name="projectStartDate" value={projectStartDate} onChange={handleProjectStartDateChange}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="projectEndDate">Project End Date</label>
+                            <input type="date" id="projectEndDate" name="projectEndDate" value={projectEndDate} onChange={handleProjectEndDateChange}/>
+                        </div>
+                        <div className="form-group">    
+                            <label htmlFor="projectDescription">Project Description:<span className="required">*</span></label>
+                            <textarea id="projectDescription" name="projectDescription" required
+                            placeholder='Mention problem statement, project objective and desired outcome'></textarea>
+                             <small className="textarea-info">max 500 words</small>
+                        </div>
+                        <div className="form-group">    
+                            <label htmlFor="initiator">Initiated By:<span className="required">*</span></label>
+                            <textarea id="initiator" name="initiator" required
+                            placeholder='Who initiated this project and is it a funded project?'></textarea>
+                             <small className="textarea-info">max 500 words</small>
+                        </div>
+                    </div> : ''}
+                    {nominationType === 'Quarterly' ?<div className="form-section">
                         <h3>Nominee Details</h3>
                         <div className="form-group">
                             <label htmlFor="employeeId">Employee ID <span className="required">*</span><span className="info-icon_main">i
@@ -172,8 +231,8 @@ const MainPage = () => {
                             <label htmlFor="teamBu">Team/BU</label>
                             <input type="text" id="teamBu" name="teamBu" value={employeeDetails.teamBu} readOnly disabled={true} />
                         </div>
-                    </div>
-                    <div className="form-section">
+                    </div> : ''}
+                    {nominationType === 'Quarterly' ?  <div className="form-section">
                         <h3>Nomination Details</h3>
                         <div className="form-group">
                             <label htmlFor="nominationReason">OKR 2024:<span className="required">*</span></label>
@@ -227,25 +286,173 @@ const MainPage = () => {
                             <textarea id="employeeAppreciation" name="employeeAppreciation"></textarea>
                             <small className="textarea-info">max 500 words</small>
                         </div>
+                    </div> : ''}
+                    {nominationType === 'Half Yearly' ? <div className="form-section">
+                        <h3>Project Results / Benefits</h3>
+                        {/* <div className="form-group">
+                            <label htmlFor="nominationReason">OKR 2024:<span className="required">*</span></label>
+                            <div className="okr-options-vertical">
+                                {['Application of AI with Confidence',
+                             'Trusted Customer Experience', 
+                             'Expand Our Global Reach', 
+                             'Learn, Grow and Thrive'].map((option, index) => {
+                                return (
+                                    <div 
+                                key={option}
+                                value={option}
+                                className={`okr-option ${okrOption === option ? 'selected' : ''}`} 
+                                onClick={(e) => handleOkrOptionChange(e)}>{option}
+                                </div>
+                                );
+                            })}
+                            </div>
+                            </div> */}
+                                
+                        <div className="form-group">    
+                            <label htmlFor="buPriorities">BU Priorities:<span className="required">*</span></label>
+                            <textarea id="buPriorities" name="buPriorities" required
+                            placeholder='Show-case how the project helped deliver on the 2022 priorities for your respective BU'></textarea>
+                             <small className="textarea-info">max 500 words</small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="customerCentricity">Customer Centricity:</label>
+                            <textarea id="customerCentricity" name="customerCentricity"
+                            placeholder='The team uses this to demonstrate what benefit did our TR end customers receive as part of this change'></textarea>
+                             <small className="textarea-info">max 500 words</small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="collaboration">Collaboration:</label>
+                            <textarea id="collaboration" name="collaboration"
+                            placeholder='Elaborate on collaboration that has been carried out across teams, groups, regions & functions'></textarea>
+                             <small className="textarea-info">max 500 words</small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="challengesFaced">Challenges Faced:</label>
+                            <textarea id="challengesFaced" name="challengesFaced"
+                            placeholder='Ilustrate key/major challenges faced & smart workaround that were adopted'></textarea>
+                             <small className="textarea-info">max 500 words</small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="savingsBenefits">Highlight Savings and Benefits:</label>
+                            <textarea id="savingsBenefits" name="savingsBenefits"
+                            placeholder='Time/Cost/Resource savings. Reduced number of CRS, improved SLAs etc'></textarea>
+                             <small className="textarea-info">max 500 words</small>
+                        </div>
+                        {/* <div className="form-group">
+                            <label htmlFor="category">Category:</label>
+                            <select id="category" name="category">
+                            <option value="">Select a Category</option>
+                                <option value="Category 1" onClick={(e) => handleCategoryChange(e)}>Process Excellence - Individual Contributor</option>
+                                <option value="Category 2" onClick={(e) => handleCategoryChange(e)}>Male Ally</option>
+                                <option value="Category 3" onClick={(e) => handleCategoryChange(e)}>Women who made a difference</option>
+                                <option value="Category 4" onClick={(e) => handleCategoryChange(e)}>Innovation Trail Blazer</option>
+                                <option value="Category 5" onClick={(e) => handleCategoryChange(e)}>Customer Centricity</option>
+                            </select>
+                        </div> */}
+                        <div className="form-group">
+                            <label htmlFor="reason">Reason for Award:</label>
+                            <textarea id="reason" name="reason" placeholder='Explain the reasons why your team deserves the award'></textarea>
+                            <small className="textarea-info">max 500 words</small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="prevTeamAward">Previous team award details:</label>
+                            <textarea id="prevTeamAward" name="prevTeamAward" placeholder='Provide details if the beam has alsody received any award/recognition within the department'></textarea>
+                            <small className="textarea-info">max 500 words</small>
+                        </div>
+                    </div> : ''}
+                    {nominationType === 'Half Yearly' ? <div className="form-section">
+                        <h3>Team Member Details</h3>
+                        <div className="form-group">
+                            <label htmlFor="employeeId">Employee ID <span className="required">*</span><span className="info-icon_main">i
+                                <span className="tooltip-text">Enter Employee ID to search for Employee details</span>
+                            </span></label>
+                            <div className="input-with-icon">
+                                <input type="text" id="employeeId" name="employeeId" value={employeeId} onChange={handleEmployeeIdChange} required/>
+                                <button type="button" className="search-icon" onClick={handleSearch}>
+                                    🔍
+                                </button>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="employeeName">Employee Name</label>
+                            <input type="text" id="employeeName" name="employeeName" value={employeeDetails.employeeName} readOnly disabled={true} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="designation">Designation</label>
+                            <input type="text" id="designation" name="designation" value={employeeDetails.designation} readOnly disabled={true} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="teamBu">Team/BU</label>
+                            <input type="text" id="teamBu" name="teamBu" value={employeeDetails.teamBu} readOnly disabled={true} />
+                        </div>
+                        <button type="button" className="btn add-member-button" onClick={addTeamMember}>Add Member</button>
+                    </div> : ''}
+                    <div className="form-section">
+                        {teamMembers.map((member, index) => (
+                            <div key={index}>
+                            <div className="form-group">
+                            <label htmlFor={`teamMemberId-${index}`}>Employee ID <span className="required">*</span><span className="info-icon_main">i
+                                <span className="tooltip-text">Enter Employee ID to search for Employee details</span>
+                            </span></label>
+                            <div className="input-with-icon">
+                                <input type="text" 
+                                id={`employeeId-${index}`} 
+                                name={`employeeId-${index}`} 
+                                value={member.employeeName}
+                                onChange={handleEmployeeIdChange} required/>
+                                <button type="button" className="search-icon" onClick={handleSearch}>
+                                    🔍
+                                </button>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="employeeName">Employee Name</label>
+                            <input type="text" id="employeeName" name="employeeName" value={employeeDetails.employeeName} readOnly disabled={true} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="designation">Designation</label>
+                            <input type="text" id="designation" name="designation" value={employeeDetails.designation} readOnly disabled={true} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="teamBu">Team/BU</label>
+                            <input type="text" id="teamBu" name="teamBu" value={employeeDetails.teamBu} readOnly disabled={true} />
+                        </div>
+                            </div>
+                        ))}
                     </div>
                     <div className="form-section">
                     <h3>Attach Files</h3>
                     <div className="form-group">
-                            <label htmlFor="evidence">Evidence</label>
+                            <label htmlFor="evidence">Evidence:</label>
                             <input type="file" id="evidence" name="evidence" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="citation">Citation</label>
-                            <textarea id="citation" name="citation"></textarea>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="photo">Photo</label>
+                            <label htmlFor="photo">Photo:</label>
                             <input type="file" id="photo" name="photo" />
                         </div>
                     </div>
+                    {nominationType === 'Quarterly' && <div className="form-section">
+                    <h3>Winner Details (To be used if Nomination is finalised)</h3>
+                    <div className="form-group">
+                            <label htmlFor="nomineePhoto">Nominee Photo</label>
+                            <input type="file" id="nomineePhoto" name="nomineePhoto" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="citation">Fixed Citation (to be used for Atrium Page)</label>
+                            <textarea id="citation" name="citation"></textarea>
+                            <small className="textarea-info">max 500 words</small>
+                        </div>
+                    </div>}
+                    <div className="note-section">
+                        <h3>Note</h3>
+                        <ol>
+                            <li>Double-check the employee details before submission.</li>
+                            <li>Ensure all fields are filled out correctly before submission.</li>
+                        </ol>
+                    </div>
                     <div className="form-buttons">
-                        <button type="button" className="btn save-button">Save</button>
                         <button type="submit" className="btn submit-button" onClick={(e) => onSubmit(e)}>Submit</button>
+                        <button type="button" className="btn save-button">Reset</button>
                     </div>
                 </form>
             </div>

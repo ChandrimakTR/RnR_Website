@@ -79,6 +79,48 @@
     }
 }
 
+.note-section {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.note-section h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.note-section ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.note-section ol li {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+#projectStartDate , #projectEndDate {
+    width: 200px;
+}
+
+#nominatingManager , #period {
+    width: 432px;
+}
+
+#evidence , #photo {
+    border: none;
+}
+
+#employeeId {
+    width: 422px;
+}
+
 .form-group textarea {
     resize: vertical; /* Allow vertical resizing */
     min-height: 100px;
@@ -263,6 +305,17 @@
 }
 
 @media (max-width: 480px) {
+    #nominatingManager , #period {
+        width: 280px;
+    }
+
+    #projectStartDate , #projectEndDate {
+        width: 200px;
+        margin-left: 35px;
+    }
+    #nominatingType {
+        margin-left: 10px;
+    }
     .form h2 {
         font-size: 20px; /* Adjust font size for smaller screens */
     }
