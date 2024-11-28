@@ -66,8 +66,12 @@ const MainPage = () => {
         setNominationType(event.target.value);
     };
 
-    
+    const deleteTeamMember = (employeeId) => {
+        const newTeamMembers = teamMembers.filter((member) =>  member.employeeId !== employeeId);
+        setTeamMembers(newTeamMembers);
+    };
 
+    
     const handleSearch = async () => {
         // Implement search functionality here
         try {
@@ -77,6 +81,7 @@ const MainPage = () => {
             }
             const data = await response.json();
             setEmployeeDetails({
+                employeeId: data.id,
                 employeeName: data.name,
                 designation: data.company.bs,
                 teamBu: data.company.name
@@ -423,12 +428,8 @@ const MainPage = () => {
                     <div className="form-section">
                     <h3>Attach Files</h3>
                     <div className="form-group">
-                            <label htmlFor="evidence">Evidence:</label>
+                            <label htmlFor="evidence">Evidence (attach relevant files here):</label>
                             <input type="file" id="evidence" name="evidence" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="photo">Photo:</label>
-                            <input type="file" id="photo" name="photo" />
                         </div>
                     </div>
                     {nominationType === 'Quarterly' && <div className="form-section">

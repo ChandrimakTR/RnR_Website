@@ -121,6 +121,24 @@
     width: 422px;
 }
 
+#nomineePhoto {
+    border: none;
+}
+
+.delete-icon {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+}
+
+.delete-icon {
+    right: 40px; /* Adjust position for delete icon */
+}
+
 .form-group textarea {
     resize: vertical; /* Allow vertical resizing */
     min-height: 100px;

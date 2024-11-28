@@ -17,7 +17,7 @@ const Header = ({setShowMainPage, setShowSubmissionPage, showMainPage, showSubmi
     <>
       <div className="header-top"
       style={{
-        backgroundImage: 'url(/header.jpg)',
+        backgroundImage: 'url(./header.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}>
